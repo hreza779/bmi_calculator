@@ -6,7 +6,15 @@ import 'package:flutter/material.dart';
 import '../values/strings.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+
+
+  ResultPage({required this.bmiResult ,required this.resultText ,required this.interpretation});
+
+
+  String bmiResult;
+  String resultText;
+  String interpretation;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +42,15 @@ class ResultPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'Normal',
+                    resultText,
                     style: resultTextStyle,
                   ),
                   Text(
-                    '28.0',
+                    bmiResult,
                     style: bmiTextStyle,
                   ),
                   Text(
-                    'Your BMI is good!',
+                    interpretation,
                     style: resultBodyTextStyle,
                   ),
                 ],
