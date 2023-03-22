@@ -1,6 +1,5 @@
+import 'package:bmi_calculator/values/constants.dart';
 import 'package:flutter/material.dart';
-
-
 
 class CustomIcon extends StatelessWidget {
   CustomIcon({required this.label, required this.mIcon});
@@ -17,7 +16,7 @@ class CustomIcon extends StatelessWidget {
           mIcon,
           size: 80.0,
         ),
-        Text(label),
+        Text(label, style: labelTextStyle),
       ],
     );
   }
