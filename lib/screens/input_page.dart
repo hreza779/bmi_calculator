@@ -4,12 +4,19 @@ import '../values/colors.dart';
 import '../components/custom_card.dart';
 import '../components/custom_icon.dart';
 
+enum Gender {
+  male,
+  female,
+}
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender = Gender.male;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,19 +31,34 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Expanded(
                     child: CustomCard(
-                      mColor: cardColor,
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.male;
+                        });
+                      },
+                      mColor: selectedGender == Gender.male
+                          ? cardColor
+                          : inactiveCardColor,
                       mChild: CustomIcon(
                         mIcon: Icons.male,
-                        label: 'MALE',
+                        label: male,
                       ),
                     ),
                   ),
                   Expanded(
                     child: CustomCard(
-                      mColor: cardColor,
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.female;
+                        });
+
+                      },
+                      mColor: selectedGender == Gender.female
+                          ? cardColor
+                          : inactiveCardColor,
                       mChild: CustomIcon(
                         mIcon: Icons.female,
-                        label: 'FEMALE',
+                        label: female,
                       ),
                     ),
                   ),
@@ -46,7 +68,6 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: CustomCard(
                 mColor: cardColor,
-                mChild: Text('test'),
               ),
             ),
             Expanded(
@@ -55,16 +76,22 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: CustomCard(
                       mColor: cardColor,
-                      mChild: Text('test'),
                     ),
                   ),
                   Expanded(
                     child: CustomCard(
                       mColor: cardColor,
-                      mChild: Text('test'),
                     ),
                   ),
                 ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 70.0,
+              color: bottomCardColor,
+              child: Center(
+                child: Text(calculateYourBMI),
               ),
             ),
           ],
